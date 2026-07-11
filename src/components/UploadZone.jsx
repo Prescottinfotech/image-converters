@@ -22,7 +22,7 @@ export default function UploadZone({ onDrop, onDragOver, onDragLeave, onFileInpu
         onChange={onFileInput}
         className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
       />
-      <div className="p-10 md:p-14 text-center flex flex-col items-center justify-center space-y-4">
+      <div className="md:p-14 text-center flex flex-col items-center justify-center space-y-4">
         <div className={`p-4 rounded-2xl transition-all duration-300 ${
           isDragging 
             ? 'bg-indigo-500 text-white scale-110 shadow-lg shadow-indigo-500/30' 

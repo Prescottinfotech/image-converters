@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layers, Mail, Github, Twitter, Heart } from 'lucide-react';
+import { Layers, Mail, Github, Twitter } from 'lucide-react';
 
 export default function Footer({ theme }) {
   const isDark = theme === 'dark';
@@ -7,7 +7,7 @@ export default function Footer({ theme }) {
   return (
     <footer className={`border-t ${isDark ? 'border-slate-800 bg-slate-950' : 'border-slate-200 bg-slate-100'}`}>
       <div className="max-w-7xl mx-auto px-6 py-12 md:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 md:gap-12 gap-6">
           
           {/* Brand Column */}
           <div className="space-y-4">
@@ -22,24 +22,27 @@ export default function Footer({ theme }) {
             </p>
           </div>
 
-          {/* Product Links */}
-          <div>
-            <h4 className="font-bold mb-4">Product</h4>
-            <ul className="space-y-2 text-sm text-slate-500">
-              <li><a href="/png-to-jpg" className="hover:text-indigo-500">PNG to JPG</a></li>
-              <li><a href="#" className="hover:text-indigo-500">Compression</a></li>
-              <li><a href="#" className="hover:text-indigo-500">Resizing</a></li>
-            </ul>
-          </div>
+          {/* Product & Company Links (Flex on mobile, stays in grid) */}
+          <div className="flex gap-8">
+            {/* Product Links */}
+            <div>
+              <h4 className="font-bold mb-4">Product</h4>
+              <ul className="space-y-2 text-sm text-slate-500">
+                <li><a href="/png-to-jpg" className="hover:text-indigo-500">PNG to JPG</a></li>
+                <li><a href="#" className="hover:text-indigo-500">Compression</a></li>
+                <li><a href="#" className="hover:text-indigo-500">Resizing</a></li>
+              </ul>
+            </div>
 
-          {/* Company Links */}
-          <div>
-            <h4 className="font-bold mb-4">Company</h4>
-            <ul className="space-y-2 text-sm text-slate-500">
-              <li><a href="/about" className="hover:text-indigo-500">About Us</a></li>
-              <li><a href="/privacy" className="hover:text-indigo-500">Privacy Policy</a></li>
-              <li><a href="/feedback" className="hover:text-indigo-500">Feedback</a></li>
-            </ul>
+            {/* Company Links */}
+            <div>
+              <h4 className="font-bold mb-4">Company</h4>
+              <ul className="space-y-2 text-sm text-slate-500">
+                <li><a href="/about" className="hover:text-indigo-500">About Us</a></li>
+                <li><a href="/privacy" className="hover:text-indigo-500">Privacy Policy</a></li>
+                <li><a href="/feedback" className="hover:text-indigo-500">Feedback</a></li>
+              </ul>
+            </div>
           </div>
 
           {/* Contact & Social */}
@@ -60,11 +63,8 @@ export default function Footer({ theme }) {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-slate-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-slate-500">
+        <div className="border-t border-slate-800 md:mt-12 mt-6 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-slate-500">
           <p>© 2026 Convertify. All rights reserved.</p>
-          <p className="flex items-center mt-4 md:mt-0">
-            Made with <Heart className="h-4 w-4 text-rose-500 mx-1" /> in the browser.
-          </p>
         </div>
       </div>
     </footer>

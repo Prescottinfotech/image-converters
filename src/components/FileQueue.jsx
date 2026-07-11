@@ -71,13 +71,13 @@ export default function FileQueue({
       </div>
       
       {files.length > 0 && (
-        <div className="px-6 py-4 flex items-center justify-end gap-3 border-t border-slate-800 bg-slate-900/60">
-            <button onClick={onConvertAll} disabled={isConvertingAll} className="px-5 py-2.5 rounded-xl text-sm font-bold bg-indigo-600 text-white flex items-center gap-2">
+        <div className="px-6 py-4 flex flex-col md:flex-row items-stretch md:items-center justify-end gap-3 border-t border-slate-800 bg-slate-900/60">
+            <button onClick={onConvertAll} disabled={isConvertingAll} className="px-5 py-2.5 rounded-xl text-sm font-bold bg-indigo-600 text-white flex items-center justify-center gap-2 w-full md:w-auto">
                 <RefreshCw className={`h-4 w-4 ${isConvertingAll ? 'animate-spin' : ''}`} />
                 <span>{isConvertingAll ? 'Processing...' : 'Convert All'}</span>
             </button>
             {convertedCount > 0 && (
-                <button onClick={onDownloadAll} className="px-5 py-2.5 rounded-xl text-sm font-bold bg-emerald-500 text-white flex items-center gap-2">
+                <button onClick={onDownloadAll} className="px-5 py-2.5 rounded-xl text-sm font-bold bg-emerald-500 text-white flex items-center justify-center gap-2 w-full md:w-auto">
                     <Download className="h-4 w-4" />
                     <span>Download All ({convertedCount})</span>
                 </button>

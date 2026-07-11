@@ -45,8 +45,10 @@ export default function Header({ theme, toggleTheme }) {
               {item.dropdown ? (
                 <button 
                   onClick={() => setDropdownOpen(!dropdownOpen)}
-                  className={`flex items-center text-base font-semibold ${
-                    dropdownOpen ? 'text-indigo-400' : 'text-slate-300 hover:text-white'
+                  className={`flex items-center md:text-lg text-sm font-semibold transition-colors ${
+                    dropdownOpen 
+                      ? (theme === 'dark' ? 'text-indigo-400' : 'text-indigo-600') 
+                      : (theme === 'dark' ? 'text-slate-300 hover:text-white' : 'text-slate-600 hover:text-slate-900')
                   }`}
                 >
                   {item.name} <ChevronDown className="ml-1 h-5 w-5" />
@@ -54,19 +56,27 @@ export default function Header({ theme, toggleTheme }) {
               ) : (
                 <a 
                   href={item.href} 
-                  className={`text-base font-semibold ${
+                  className={`md:text-lg text-smfont-semibold transition-colors ${
                     isActive(item.href) 
-                      ? 'text-indigo-400 border-b-2 border-indigo-500 pb-1' 
-                      : 'text-slate-300 hover:text-white'
+                      ? (theme === 'dark' ? 'text-indigo-400 border-b-2 border-indigo-500 pb-1' : 'text-indigo-600 border-b-2 border-indigo-600 pb-1') 
+                      : (theme === 'dark' ? 'text-slate-300 hover:text-white' : 'text-slate-600 hover:text-slate-900')
                   }`}
                 >
                   {item.name}
                 </a>
               )}
               {item.dropdown && dropdownOpen && (
-                <div className="absolute top-full mt-2 w-48 bg-slate-800 rounded-xl shadow-2xl py-2 z-50">
+                <div className={`absolute top-full mt-2 w-48 rounded-xl shadow-2xl py-2 z-50 ${
+                  theme === 'dark' ? 'bg-slate-800' : 'bg-white border border-slate-200'
+                }`}>
                   {item.dropdown.map(sub => (
-                    <a key={sub.name} href={sub.href} className="block px-4 py-3 text-base text-slate-300 hover:bg-slate-700 hover:text-white">
+                    <a 
+                      key={sub.name} 
+                      href={sub.href} 
+                      className={`block px-4 py-3 text-base transition-colors ${
+                        theme === 'dark' ? 'text-slate-300 hover:bg-slate-700 hover:text-white' : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
+                      }`}
+                    >
                       {sub.name}
                     </a>
                   ))}
@@ -74,14 +84,26 @@ export default function Header({ theme, toggleTheme }) {
               )}
             </div>
           ))}
-          <button onClick={toggleTheme} className="p-3 rounded-xl border border-slate-700 text-amber-400 hover:bg-slate-800">
+          <button 
+            onClick={toggleTheme} 
+            className={`p-3 rounded-xl border transition-colors ${
+              theme === 'dark' 
+                ? 'border-slate-700 text-amber-400 hover:bg-slate-800' 
+                : 'border-slate-200 text-amber-500 hover:bg-slate-100'
+            }`}
+          >
             {theme === 'dark' ? <Sun className="h-6 w-6" /> : <Moon className="h-6 w-6" />}
           </button>
         </nav>
 
         {/* Mobile menu button */}
         <div className="lg:hidden">
-          <button onClick={() => setIsOpen(!isOpen)} className="text-slate-300 p-2">
+          <button 
+            onClick={() => setIsOpen(!isOpen)} 
+            className={`p-2 transition-colors ${
+              theme === 'dark' ? 'text-slate-300 hover:text-white' : 'text-slate-600 hover:text-slate-900'
+            }`}
+          >
             {isOpen ? <X className="h-8 w-8" /> : <Menu className="h-8 w-8" />}
           </button>
         </div>
@@ -89,9 +111,19 @@ export default function Header({ theme, toggleTheme }) {
 
       {/* Mobile Nav */}
       {isOpen && (
-        <div className="lg:hidden bg-slate-900 border-t border-slate-800 px-6 py-6 space-y-6">
+        <div className={`lg:hidden border-t px-6 py-6 space-y-6 ${
+          theme === 'dark' ? 'bg-slate-900 border-slate-800' : 'bg-white border-slate-200'
+        }`}>
           {navItems.map((item) => (
-            <a key={item.name} href={item.href} className="block text-lg font-semibold text-slate-200">
+            <a 
+              key={item.name} 
+              href={item.href} 
+              className={`block text-lg font-semibold transition-colors ${
+                isActive(item.href)
+                  ? (theme === 'dark' ? 'text-indigo-400' : 'text-indigo-600')
+                  : (theme === 'dark' ? 'text-slate-200 hover:text-white' : 'text-slate-700 hover:text-slate-900')
+              }`}
+            >
               {item.name}
             </a>
           ))}

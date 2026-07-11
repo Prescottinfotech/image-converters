@@ -154,7 +154,7 @@ export default function HomePage({ theme }) {
   return (
     <>
       {/* Hero Header Banner */}
-      <div className="relative overflow-hidden py-12 md:py-16">
+      <div className="relative overflow-hidden py-6 md:py-16">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-72 opacity-30 pointer-events-none">
           <div className="absolute top-[-10%] left-[20%] w-[300px] h-[300px] bg-indigo-500/30 rounded-full blur-[100px]" />
           <div className="absolute top-[20%] right-[10%] w-[400px] h-[400px] bg-purple-500/20 rounded-full blur-[120px]" />
@@ -175,7 +175,7 @@ export default function HomePage({ theme }) {
         </div>
       </div>
       
-      <main id="converter" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
+      <main id="converter" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 md:pb-24 pb-5">
         <div className="space-y-6">
           <div
             onDragOver={handleDragOver}
@@ -252,12 +252,12 @@ export default function HomePage({ theme }) {
               </div>
             ))}
             <div className="p-6 flex justify-end space-x-3">
-              <button onClick={convertAllFiles} className="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-500 rounded-xl text-white font-semibold flex items-center">
-                <RefreshCw className="h-4 w-4 mr-2" /> Convert All
+              <button onClick={convertAllFiles} className="md:px-5 md:py-2.5 px-3 py-1.5 bg-indigo-600 hover:bg-indigo-500 rounded-xl text-white font-semibold flex items-center">
+                <RefreshCw className="h-5 w-5 mr-2" /> Convert All
               </button>
               {convertedCount > 0 && (
-                <button onClick={downloadAll} className="px-5 py-2.5 bg-emerald-500 hover:bg-emerald-600 rounded-xl text-white font-semibold flex items-center">
-                  <Download className="h-4 w-4 mr-2" /> Download All ({convertedCount})
+                <button onClick={downloadAll} className="md:px-5 md:py-2.5 px-3 py-1.5 bg-emerald-500 hover:bg-emerald-600 rounded-xl text-white font-semibold flex items-center">
+                  <Download className="h-5 w-5 mr-2" /> Download All ({convertedCount})
                 </button>
               )}
             </div>
