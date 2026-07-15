@@ -2,31 +2,31 @@ import React from 'react';
 
 export default function PngToJpgPage() {
   return (
-    <div className="max-w-4xl mx-auto px-6 py-12">
-      <h1 className="text-3xl md:text-4xl font-black mb-6">PNG to JPG: Complete Conversion Guide</h1>
+    <div className="max-w-4xl mx-auto px-6 md:py-12 py-6">
+      <h1 className="text-xl md:text-4xl font-black mb-6">PNG to JPG: Complete Conversion Guide</h1>
       
-      <p className="text-slate-400 mb-6 leading-relaxed">
+      <p className="text-gray-800 mb-2 leading-relaxed">
         PNG and JPG are two of the most common image formats, but they serve very different purposes. 
         Understanding when to convert from PNG to JPG can help you save storage space, improve website performance, 
         and ensure your images work everywhere.
       </p>
 
-      <div className="bg-slate-900/50 p-6 rounded-2xl border border-slate-800 mb-8">
+      <div className=" md:p-6 rounded-2xl mb-8">
         <h2 className="text-lg font-bold mb-2">Key Difference:</h2>
-        <p className="text-slate-400 text-sm">
+        <p className="text-gray-800 text-sm">
           PNG files are lossless and support transparency, while JPG files use compression to create much smaller files—often 5-10x smaller for photos.
         </p>
       </div>
 
       <h2 className="text-2xl font-bold mb-4">Why Convert PNG to JPG?</h2>
-      <p className="text-slate-400 mb-4">There are several compelling reasons to convert your PNG files to JPG format:</p>
+      <p className="text-gray-800 mb-4">There are several compelling reasons to convert your PNG files to JPG format:</p>
       
       <h3 className="text-xl font-semibold mb-2">Dramatically Smaller File Sizes</h3>
-      <p className="text-slate-400 mb-4">
+      <p className="text-gray-800 mb-4">
         The most significant advantage of JPG is file size. A photograph saved as PNG might be 5-10 MB, 
         while the same image as JPG could be just 500 KB—a 10-20x reduction. This makes a huge difference when:
       </p>
-      <ul className="list-disc list-inside text-slate-400 mb-6 space-y-2 text-sm">
+      <ul className="list-disc list-inside text-gray-800 mb-6 space-y-2 text-sm">
         <li>Sending images via email (many services limit attachment sizes)</li>
         <li>Uploading photos to social media</li>
         <li>Adding images to websites (faster loading = better SEO)</li>
@@ -34,20 +34,20 @@ export default function PngToJpgPage() {
       </ul>
 
       <h3 className="text-xl font-semibold mb-2">Universal Compatibility</h3>
-      <p className="text-slate-400 mb-6 text-sm">
+      <p className="text-gray-800 mb-6 text-sm">
         JPG is the most universally supported image format. While PNG is widely supported too, 
         some older systems, applications, and websites handle JPG more reliably. Converting ensures your images work everywhere.
       </p>
 
       <h3 className="text-xl font-semibold mb-2">Removing Transparency</h3>
-      <p className="text-slate-400 mb-6 text-sm">
+      <p className="text-gray-800 mb-6 text-sm">
         PNG supports transparent backgrounds, but sometimes you need a solid background instead. 
         Converting to JPG automatically fills transparent areas with white, giving you a predictable result for printing or specific use cases.
       </p>
 
       <h2 className="text-2xl font-bold mb-4">How to Convert PNG to JPG</h2>
-      <p className="text-slate-400 mb-4">Our browser-based converter makes the process simple and secure:</p>
-      <ol className="list-decimal list-inside text-slate-400 space-y-2 text-sm">
+      <p className="text-gray-800 mb-4">Our browser-based converter makes the process simple and secure:</p>
+      <ol className="list-decimal list-inside text-gray-800 space-y-2 text-sm">
         <li><strong>Select files</strong> — Click the SELECT FILES button or drag and drop up to 20 PNG images into the conversion area</li>
         <li><strong>Convert</strong> — Click CONVERT to start the conversion. Processing happens instantly in your browser</li>
         <li><strong>Save</strong> — Save individual files or click SAVE ALL to get everything at once</li>

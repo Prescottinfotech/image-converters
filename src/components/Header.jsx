@@ -48,7 +48,7 @@ export default function Header({ theme, toggleTheme }) {
                   className={`flex items-center md:text-lg text-sm font-semibold transition-colors ${
                     dropdownOpen 
                       ? (theme === 'dark' ? 'text-indigo-400' : 'text-indigo-600') 
-                      : (theme === 'dark' ? 'text-slate-300 hover:text-white' : 'text-slate-600 hover:text-slate-900')
+                      : (theme === 'dark' ? 'text-slate-300 hover:text-white' : 'text-gray-800 hover:text-gray-900')
                   }`}
                 >
                   {item.name} <ChevronDown className="ml-1 h-5 w-5" />
@@ -56,10 +56,10 @@ export default function Header({ theme, toggleTheme }) {
               ) : (
                 <a 
                   href={item.href} 
-                  className={`md:text-lg text-smfont-semibold transition-colors ${
+                  className={`md:text-lg text-sm font-semibold transition-colors ${
                     isActive(item.href) 
                       ? (theme === 'dark' ? 'text-indigo-400 border-b-2 border-indigo-500 pb-1' : 'text-indigo-600 border-b-2 border-indigo-600 pb-1') 
-                      : (theme === 'dark' ? 'text-slate-300 hover:text-white' : 'text-slate-600 hover:text-slate-900')
+                      : (theme === 'dark' ? 'text-slate-300 hover:text-white' : 'text-gray-800 hover:text-gray-900')
                   }`}
                 >
                   {item.name}
@@ -74,7 +74,7 @@ export default function Header({ theme, toggleTheme }) {
                       key={sub.name} 
                       href={sub.href} 
                       className={`block px-4 py-3 text-base transition-colors ${
-                        theme === 'dark' ? 'text-slate-300 hover:bg-slate-700 hover:text-white' : 'text-slate-600 hover:bg-slate-100 hover:text-slate-900'
+                        theme === 'dark' ? 'text-slate-300 hover:bg-slate-700 hover:text-white' : 'text-gray-800 hover:bg-slate-100 hover:text-gray-900'
                       }`}
                     >
                       {sub.name}
@@ -101,7 +101,7 @@ export default function Header({ theme, toggleTheme }) {
           <button 
             onClick={() => setIsOpen(!isOpen)} 
             className={`p-2 transition-colors ${
-              theme === 'dark' ? 'text-slate-300 hover:text-white' : 'text-slate-600 hover:text-slate-900'
+              theme === 'dark' ? 'text-slate-300 hover:text-white' : 'text-gray-800 hover:text-gray-900'
             }`}
           >
             {isOpen ? <X className="h-8 w-8" /> : <Menu className="h-8 w-8" />}
@@ -121,7 +121,7 @@ export default function Header({ theme, toggleTheme }) {
               className={`block text-lg font-semibold transition-colors ${
                 isActive(item.href)
                   ? (theme === 'dark' ? 'text-indigo-400' : 'text-indigo-600')
-                  : (theme === 'dark' ? 'text-slate-200 hover:text-white' : 'text-slate-700 hover:text-slate-900')
+                  : (theme === 'dark' ? 'text-slate-200 hover:text-white' : 'text-gray-800 hover:text-gray-900')
               }`}
             >
               {item.name}
