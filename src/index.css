@@ -1,1 +1,43 @@
 @import "tailwindcss";
+
+@theme {
+  --color-primary: #007BFF;
+  --color-charcoal: #212529;
+  --color-body-gray: #6C757D;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+}
+
+@theme inline {
+  --color-primary-dark: #3b82f6;
+  --color-charcoal-dark: #f8fafc;
+  --color-body-gray-dark: #94a3b8;
+  --color-bg-dark: #0f172a;
+}
+
+@layer base {
+  body {
+    @apply bg-white text-body-gray font-sans transition-colors duration-300;
+  }
+  
+  .dark body {
+    @apply bg-[--color-bg-dark] text-[--color-body-gray-dark];
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-charcoal font-bold transition-colors duration-300;
+  }
+
+  .dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
+    @apply text-[--color-charcoal-dark];
+  }
+}
+
+@layer utilities {
+  .blob-primary {
+    @apply absolute w-72 h-72 rounded-full blur-[100px] bg-primary/20;
+  }
+  .blob-secondary {
+    @apply absolute w-96 h-96 rounded-full blur-[120px] bg-purple-500/10;
+  }
+}
