@@ -6,6 +6,7 @@
   --color-body-gray: #6C757D;
   --radius-lg: 8px;
   --radius-xl: 12px;
+  --font-sans: 'Poppins', sans-serif;
 }
 
 @theme inline {

@@ -1,89 +1,70 @@
 import React from 'react';
-import { Trash2, Download, Eye, RefreshCw, CheckCircle } from 'lucide-react';
+import { Trash2, Download, RefreshCw, CheckCircle, AlertCircle, Loader2 } from 'lucide-react';
 
 export default function FileQueue({ 
   files, convertedCount, formatBytes, 
-  onClear, onConvert, onDownload, onRemove, onPreview, 
-  isConvertingAll, onConvertAll, onDownloadAll 
+  onClear, onConvert, onDownload, onRemove,
+  isConvertingAll, onConvertAll 
 }) {
-  const originalTotalSize = files.reduce((sum, f) => sum + f.originalSize, 0);
-  const convertedTotalSize = files.reduce((sum, f) => sum + (f.convertedSize || 0), 0);
-  const totalSavings = originalTotalSize - convertedTotalSize;
-  const averageSavingsPercent = originalTotalSize > 0 ? Math.round((totalSavings / originalTotalSize) * 100) : 0;
-
   return (
-    <div className="rounded-2xl border overflow-hidden shadow-sm bg-slate-900 border-slate-800">
-      <div className="px-6 py-4 border-b border-slate-800 bg-slate-900/60 flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <span className="font-bold text-lg text-slate-100">File Queue ({files.length})</span>
-          {convertedCount > 0 && (
-            <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-              {convertedCount} Converted
-            </span>
-          )}
-        </div>
-        <button onClick={onClear} className="text-xs text-slate-400 hover:text-rose-400 flex items-center gap-1.5">
-          <Trash2 className="h-3.5 w-3.5" /> Clear Queue
-        </button>
-      </div>
-
-      {convertedCount > 0 && (
-        <div className="grid grid-cols-3 divide-x divide-slate-800 border-b border-slate-800 text-center py-3 bg-slate-950/30">
-          <div><div className="text-[10px] uppercase text-slate-400 mb-0.5">Original Size</div><div className="font-bold text-sm text-slate-100">{formatBytes(originalTotalSize)}</div></div>
-          <div><div className="text-[10px] uppercase text-slate-400 mb-0.5">JPEG Size</div><div className="font-bold text-sm text-emerald-400">{formatBytes(convertedTotalSize)}</div></div>
-          <div><div className="text-[10px] uppercase text-slate-400 mb-0.5">Space Saved</div><div className="font-bold text-sm text-indigo-400">{formatBytes(totalSavings)} ({averageSavingsPercent}%)</div></div>
-        </div>
-      )}
-
-      <div className="divide-y divide-slate-800 max-h-[500px] overflow-y-auto">
-        {files.map((file) => {
-          const ratio = file.status === 'success' && file.convertedSize ? Math.round(((file.originalSize - file.convertedSize) / file.originalSize) * 100) : 0;
-          return (
-            <div key={file.id} className="p-4 flex items-center justify-between gap-4 hover:bg-slate-800/30">
-              <div className="flex items-center space-x-4 min-w-0 flex-1">
-                <div className="h-14 w-14 rounded-lg overflow-hidden border border-slate-800 bg-slate-950 flex-shrink-0 flex items-center justify-center relative">
-                  <img src={file.originalUrl} alt="Thumbnail" className="max-h-full max-w-full object-contain" />
-                  {file.status === 'success' && <div className="absolute bottom-0 right-0 bg-emerald-500 text-white rounded-tl-lg p-0.5"><CheckCircle className="h-3 w-3" /></div>}
-                </div>
-                <div className="min-w-0">
-                  <h4 className="font-bold text-sm text-slate-100 truncate">{file.name}</h4>
-                  <div className="text-xs text-slate-400 mt-0.5">
-                    {formatBytes(file.originalSize)}
-                    {file.status === 'success' && <span className="text-emerald-400 ml-2 font-medium">{formatBytes(file.convertedSize)} ({ratio}% smaller)</span>}
-                  </div>
-                </div>
-              </div>
-              
-              <div className="flex items-center gap-2">
-                {file.status === 'success' ? (
-                  <>
-                    <button onClick={() => onPreview(file.id)} className="px-3 py-1.5 rounded-lg text-xs font-semibold border border-slate-700 text-slate-300 hover:bg-slate-800 flex items-center gap-1.5"><Eye className="h-3.5 w-3.5" /> Compare</button>
-                    <button onClick={() => onDownload(file.id)} className="px-3 py-1.5 rounded-lg text-xs font-semibold bg-emerald-500 text-white flex items-center gap-1.5"><Download className="h-3.5 w-3.5" /> Download</button>
-                  </>
-                ) : (
-                  <button onClick={() => onConvert(file.id)} className="px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 text-slate-100 hover:bg-slate-700 flex items-center gap-1.5"><RefreshCw className="h-3.5 w-3.5" /> Convert</button>
-                )}
-                <button onClick={() => onRemove(file.id)} className="p-2 rounded-lg text-slate-500 hover:text-rose-500"><Trash2 className="h-4 w-4" /></button>
-              </div>
-            </div>
-          );
-        })}
-      </div>
-      
-      {files.length > 0 && (
-        <div className="px-6 py-4 flex flex-col md:flex-row items-stretch md:items-center justify-end gap-3 border-t border-slate-800 bg-slate-900/60">
-            <button onClick={onConvertAll} disabled={isConvertingAll} className="px-5 py-2.5 rounded-xl text-sm font-bold bg-indigo-600 text-white flex items-center justify-center gap-2 w-full md:w-auto">
-                <RefreshCw className={`h-4 w-4 ${isConvertingAll ? 'animate-spin' : ''}`} />
-                <span>{isConvertingAll ? 'Processing...' : 'Convert All'}</span>
+    <div className="space-y-8">
+      <div className="flex items-center justify-between border-b border-slate-200 dark:border-slate-800 pb-3">
+        <h3 className="md:text-2xl text-base font-bold text-gray-800 dark:text-white">
+          File Queue <span className="text-primary font-medium opacity-70">({files.length} items)</span>
+        </h3>
+        <div className="flex items-center gap-4">
+            <button onClick={onClear} className="text-sm font-semibold text-slate-500 dark:text-slate-400 hover:text-rose-600 transition-colors">
+            Clear Queue
             </button>
-            {convertedCount > 0 && (
-                <button onClick={onDownloadAll} className="px-5 py-2.5 rounded-xl text-sm font-bold bg-emerald-500 text-white flex items-center justify-center gap-2 w-full md:w-auto">
-                    <Download className="h-4 w-4" />
-                    <span>Download All ({convertedCount})</span>
+            {files.length > 0 && (
+                <button 
+                    onClick={onConvertAll} 
+                    disabled={isConvertingAll}
+                    className="px-6 py-3 rounded-full text-sm font-bold bg-primary text-white flex items-center gap-2 hover:bg-primary/90 disabled:opacity-50 transition-all shadow-md shadow-primary/20"
+                >
+                    {isConvertingAll ? <Loader2 className="h-4 w-4 animate-spin" /> : <RefreshCw className="h-4 w-4" />}
+                    {isConvertingAll ? 'Processing...' : 'Convert All'}
                 </button>
             )}
         </div>
-      )}
+      </div>
+      
+      <div className="grid grid-cols-1 gap-6">
+        {files.map((file) => (
+          <div key={file.id} className="group p-4 rounded-xl border border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm hover:shadow-md transition-all duration-300 flex items-center gap-6">
+            <div className="h-20 w-20 rounded-2xl overflow-hidden bg-slate-100 dark:bg-slate-800 flex-shrink-0 border border-slate-200 dark:border-slate-700">
+                <img src={file.originalUrl} alt="Preview" className="h-full w-full object-cover" />
+            </div>
+            
+            <div className="flex-1 min-w-0">
+                <h4 className="font-semibold text-lg text-gray-800 dark:text-white truncate">{file.name}</h4>
+                <p className="text-sm text-slate-500 dark:text-slate-400 font-medium">{formatBytes(file.originalSize)}</p>
+                
+                <div className="mt-3 flex items-center gap-3">
+                    {file.status === 'success' && <span className="flex items-center gap-1.5 text-xs font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/30 px-3 py-1 rounded-full"><CheckCircle className="h-3.5 w-3.5" /> Converted</span>}
+                    {file.status === 'converting' && <span className="flex items-center gap-1.5 text-xs font-bold text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/30 px-3 py-1 rounded-full"><Loader2 className="h-3.5 w-3.5 animate-spin" /> Converting...</span>}
+                    {file.status === 'error' && <span className="flex items-center gap-1.5 text-xs font-bold text-rose-600 dark:text-rose-400 bg-rose-50 dark:bg-rose-950/30 px-3 py-1 rounded-full"><AlertCircle className="h-3.5 w-3.5" /> Error</span>}
+                    {file.status === 'pending' && <span className="flex items-center gap-1.5 text-xs font-bold text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800 px-3 py-1 rounded-full">Pending</span>}
+                </div>
+            </div>
+            
+            <div className="flex items-center gap-2">
+                {file.status === 'success' ? (
+                    <button onClick={() => onDownload(file.id)} className="px-5 py-3 rounded-xl bg-emerald-50 dark:bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 font-semibold hover:bg-emerald-100 dark:hover:bg-emerald-500/20 flex items-center gap-2">
+                    <Download className="h-4 w-4" /> Download
+                    </button>
+                ) : (
+                    <button onClick={() => onConvert(file.id)} className="px-5 py-3 rounded-xl bg-indigo-50 dark:bg-indigo-500/10 text-indigo-600 dark:text-indigo-400 font-semibold hover:bg-indigo-100 dark:hover:bg-indigo-500/20 flex items-center gap-2">
+                    <RefreshCw className="h-4 w-4" /> Convert
+                    </button>
+                )}
+                <button onClick={() => onRemove(file.id)} className="p-3 rounded-xl text-slate-400 hover:text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-950/30">
+                    <Trash2 className="h-5 w-5" />
+                </button>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import { useState, useCallback } from 'react';
 
-export const useFileProcessor = (setFiles) => {
+export const useFileProcessor = (setFiles, settings) => {
   const performCanvasConversion = (fileObj) => {
     return new Promise((resolve, reject) => {
       const img = new Image();
@@ -20,7 +20,7 @@ export const useFileProcessor = (setFiles) => {
             return;
           }
 
-          ctx.fillStyle = '#ffffff';
+          ctx.fillStyle = settings.backgroundColor || '#ffffff';
           ctx.fillRect(0, 0, targetWidth, targetHeight);
           ctx.drawImage(img, 0, 0, targetWidth, targetHeight);
 
@@ -35,7 +35,7 @@ export const useFileProcessor = (setFiles) => {
               width: targetWidth,
               height: targetHeight
             });
-          }, 'image/jpeg', 0.85);
+          }, 'image/jpeg', settings.quality || 0.85);
         } catch (e) {
           reject(e);
         }
@@ -102,7 +102,7 @@ export const useFileProcessor = (setFiles) => {
         });
         return prev;
     });
-  }, [setFiles]);
+  }, [setFiles, settings]); // Added settings to dependencies
 
-  return { processFiles, convertFile, performCanvasConversion };
+  return { processFiles, convertFile };
 };
