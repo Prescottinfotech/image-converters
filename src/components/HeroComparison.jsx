@@ -87,7 +87,7 @@ export default function HeroComparison({ imageSrc, theme }) {
   };
 
   return (
-    <div className="relative w-full aspect-[4/3] rounded-3xl shadow-2xl border border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900 overflow-hidden select-none">
+    <div className="relative w-full aspect-[4/3] rounded-3xl shadow-2xl border border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-800 overflow-hidden select-none">
       
       {/* Main interactive sliding area */}
       <div 

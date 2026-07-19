@@ -87,16 +87,16 @@ export default function HomePage({ theme }) {
   const convertedCount = files.filter(f => f.status === 'success').length;
 
   return (
-    <main className="relative min-h-screen">
+    <main className="relative min-h-screen bg-white dark:bg-slate-950 transition-colors duration-300">
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 md:py-10 z-10">
         <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Left Side: Content */}
           <div className="space-y-6">
             <div className="space-y-3">
-              <h1 className="text-xl md:text-[38px] font-semibold tracking-tight text-gray-800 dark:text-white md:leading-[3.5rem]">
+              <h1 className="text-xl md:text-[38px] font-semibold tracking-tight text-gray-800 dark:!text-white md:leading-[3.5rem]">
                 Transform Transparent <br /> PNGs to <span className="bg-gradient-to-r from-indigo-400 to-purple-500 bg-clip-text text-transparent">High-Quality JPGs</span>
               </h1>
-              <p className="text-sm md:text-base text-slate-600 dark:text-slate-400">
+              <p className="text-sm md:text-base text-slate-600 dark:!text-slate-300">
                 Convert PNG to JPG to significantly reduce file size while keeping good image quality. Fast, secure, and free.
               </p>
             </div>
@@ -118,9 +118,9 @@ export default function HomePage({ theme }) {
           </div>
         </div>
 
-        <div className="mt-24 space-y-24">
+        <div className="md:mt-24 mt-8 space-y-24">
           {files.length > 0 && (
-            <div className="mt-12 p-8 border border-slate-200 dark:border-slate-800 rounded-3xl bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm shadow-2xl shadow-slate-200/50 dark:shadow-none">
+            <div className="md:mt-12 p-8 border border-slate-200 dark:border-slate-800 rounded-3xl bg-white/50 dark:bg-slate-800/60 backdrop-blur-sm shadow-2xl shadow-slate-200/50 dark:shadow-slate-800/50">
               <FileQueue
                 files={files}
                 convertedCount={convertedCount}
@@ -142,7 +142,7 @@ export default function HomePage({ theme }) {
 
               {convertedCount > 0 && (
                 <div className="mt-8 flex justify-center">
-                  <button onClick={downloadAll} className="px-8 py-4 rounded-full text-lg font-bold bg-emerald-500 text-white flex items-center gap-2 hover:bg-emerald-600 transition-all shadow-lg shadow-emerald-500/20">
+                  <button onClick={downloadAll} className="md:px-8 md:py-4 px-4 py-2.5 rounded-full md:text-lg text-sm font-bold bg-emerald-500 text-white flex items-center gap-2 hover:bg-emerald-600 transition-all shadow-lg shadow-emerald-500/20">
                     <Download className="h-5 w-5" />
                     Download All ({convertedCount})
                   </button>
@@ -159,14 +159,14 @@ export default function HomePage({ theme }) {
 
       {/* New Feature Sections */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <section className="space-y-24 py-20">
+        <section className="space-y-24 md:py-20 py-10">
           {/* Instant Conversion */}
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="bg-white/50 dark:bg-slate-900/50 p-4 rounded-2xl border border-slate-200 dark:border-slate-800 backdrop-blur-sm shadow-sm">
+            <div className="bg-white/50 dark:bg-slate-800/50 p-4 rounded-2xl border border-slate-200 dark:border-slate-800 backdrop-blur-sm shadow-sm">
               <img src="/assets/img1.png" alt="Instant Conversion" className="w-full h-auto rounded-xl" />
             </div>
             <div>
-              <h2 className="text-3xl md:text-4xl font-extrabold text-charcoal dark:text-white mb-6">
+              <h2 className="text-2xl md:text-4xl font-extrabold text-charcoal dark:text-white mb-6">
                 Convert PNGs <span className="text-primary">instantly</span> with one click
               </h2>
               <p className="text-lg text-body-gray dark:text-slate-400 mb-6">
@@ -187,7 +187,7 @@ export default function HomePage({ theme }) {
           {/* Optimization Features */}
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="order-2 md:order-1">
-              <h2 className="text-3xl md:text-4xl font-extrabold text-charcoal dark:text-white mb-6">
+              <h2 className="text-2xl md:text-4xl font-extrabold text-charcoal dark:text-white mb-6">
                 Fine-tune <span className="text-primary">settings</span> as you wish
               </h2>
               <p className="text-lg text-body-gray dark:text-slate-400 mb-6">
@@ -203,7 +203,7 @@ export default function HomePage({ theme }) {
                 Explore settings
               </button>
             </div>
-            <div className="order-1 md:order-2 bg-white/50 dark:bg-slate-900/50 p-4 rounded-2xl border border-slate-200 dark:border-slate-800 backdrop-blur-sm shadow-sm">
+            <div className="order-1 md:order-2 bg-white/50 dark:bg-slate-800/50 p-4 rounded-2xl border border-slate-200 dark:border-slate-800 backdrop-blur-sm shadow-sm">
               <img src="/assets/img2.png" alt="Optimization Settings" className="w-full h-auto rounded-xl" />
             </div>
           </div>
@@ -214,7 +214,7 @@ export default function HomePage({ theme }) {
               <img src="/assets/img3.png" alt="API Integration" className="w-full h-auto rounded-xl" />
             </div>
             <div>
-              <h2 className="text-3xl md:text-4xl font-extrabold text-charcoal dark:text-white mb-6">
+              <h2 className="text-2xl md:text-4xl font-extrabold text-charcoal dark:text-white mb-6">
                 Easy API <span className="text-primary">integration</span> for speedy workflow
               </h2>
               <p className="text-lg text-body-gray dark:text-slate-400 mb-6">
@@ -234,13 +234,13 @@ export default function HomePage({ theme }) {
         </section>
       </div>
 
-      <section className="bg-blue-50 dark:bg-slate-950 py-20 w-full">
+      <section className="bg-blue-50 dark:bg-slate-950 md:py-20 py-10 w-full">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-12">
             <span className="text-primary font-bold tracking-wider uppercase text-sm flex items-center gap-2">
               <span className="w-3 h-3 bg-primary rounded-sm"></span> TESTIMONIALS?
             </span>
-            <h2 className="text-3xl md:text-[28px] font-semibold text-gray-800 dark:text-white mt-4 max-w-2xl">
+            <h2 className="text-xl md:text-[28px] font-semibold text-gray-800 dark:text-white mt-4 max-w-2xl">
               From startups to established brands, you'll be in good company.
             </h2>
           </div>
@@ -265,7 +265,7 @@ export default function HomePage({ theme }) {
                 image: "/assets/Testimonials3.png"
               }
             ].map((testimony, i) => (
-              <div key={i} className="p-8 rounded-3xl bg-white dark:bg-slate-900 shadow-sm flex flex-col justify-between">
+              <div key={i} className="p-8 rounded-3xl bg-white dark:bg-slate-800 shadow-sm flex flex-col justify-between">
                 <p className="text-4xl text-slate-400 mb-4">“</p>
                 <p className="text-slate-600 dark:text-slate-300 mb-8 flex-grow">{testimony.quote}</p>
                 <div className="flex items-center gap-3">

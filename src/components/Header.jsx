@@ -44,7 +44,7 @@ export default function Header({ theme, toggleTheme }) {
               {item.dropdown ? (
                 <button 
                   onClick={() => setDropdownOpen(!dropdownOpen)}
-                  className={`flex items-center text-base font-semibold transition-colors ${
+                  className={`flex items-center text-lg font-semibold transition-colors ${
                     dropdownOpen 
                       ? 'text-primary' 
                       : isDark ? 'text-slate-300 hover:text-white' : 'text-body-gray hover:text-charcoal'
@@ -55,7 +55,7 @@ export default function Header({ theme, toggleTheme }) {
               ) : (
                 <a 
                   href={item.href} 
-                  className={`text-base font-semibold transition-colors ${
+                  className={`text-lg font-semibold transition-colors ${
                     isActive(item.href) 
                       ? 'text-primary' 
                       : isDark ? 'text-slate-300 hover:text-white' : 'text-body-gray hover:text-charcoal'
@@ -101,11 +101,11 @@ export default function Header({ theme, toggleTheme }) {
       {/* Mobile Nav */}
       {isOpen && (
         <div className={`lg:hidden border-t px-6 py-6 space-y-6 ${isDark ? 'bg-slate-900 border-slate-800' : 'bg-white border-slate-200'}`}>
-          {navItems.map((item) => (
+          {navItems.filter(item => item.name !== 'Product').map((item) => (
             <a 
               key={item.name} 
               href={item.href} 
-              className={`block text-lg font-semibold transition-colors ${
+              className={`block text-base ont-semibold transition-colors ${
                 isActive(item.href)
                   ? 'text-primary'
                   : isDark ? 'text-slate-300 hover:text-white' : 'text-body-gray hover:text-charcoal'
@@ -114,6 +114,13 @@ export default function Header({ theme, toggleTheme }) {
               {item.name}
             </a>
           ))}
+          <button 
+            onClick={toggleTheme} 
+            className={`w-full flex items-center justify-between p-3 rounded-xl border ${isDark ? 'border-slate-700 text-slate-300 hover:bg-slate-800' : 'border-slate-200 text-body-gray hover:bg-slate-50'} transition-colors`}
+          >
+            <span className="font-semibold text-base">{isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode'}</span>
+            {isDark ? <Sun className="h-6 w-6 text-amber-400" /> : <Moon className="h-6 w-6 text-amber-500" />}
+          </button>
         </div>
       )}
     </header>

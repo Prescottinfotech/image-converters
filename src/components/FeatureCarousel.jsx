@@ -16,6 +16,10 @@ export default function FeatureCarousel() {
   const [transitionDuration, setTransitionDuration] = useState(500);
   const timerRef = useRef(null);
 
+  const totalOriginalFeatures = features.length;
+  // Duplicate features to create infinite loop effect
+  const displayFeatures = [...features, ...features];
+
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth < 640) setItemsPerSlide(1);
@@ -29,25 +33,29 @@ export default function FeatureCarousel() {
 
   const startAutoScroll = () => {
     timerRef.current = setInterval(() => {
-      if (activeIndex >= features.length) {
-        setTransitionDuration(0);
-        setActiveIndex(0);
-      } else {
-        setTransitionDuration(500);
-        setActiveIndex((prev) => prev + 1);
-      }
+      setActiveIndex((prev) => {
+        const next = prev + 1;
+        // If we reach the end of the first set, jump back to 0 instantly
+        if (next >= totalOriginalFeatures) {
+          setTransitionDuration(0);
+          return 0;
+        } else {
+          setTransitionDuration(500);
+          return next;
+        }
+      });
     }, 4000);
   };
 
   useEffect(() => {
     startAutoScroll();
     return () => clearInterval(timerRef.current);
-  }, [activeIndex]);
+  }, []);
 
   return (
-    <section className="py-16 dark:bg-slate-950">
+    <section className="md:py-16 py-5 dark:bg-slate-950">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-bold text-center text-slate-950 dark:text-white mb-12">Why Choose Us</h2>
+        <h2 className="md:text-3xl text-xl font-bold text-center text-slate-950 dark:text-white md:mb-12 mb-8">Why Choose Us</h2>
         <div className="relative overflow-hidden">
           <div 
             className="flex"
@@ -56,9 +64,9 @@ export default function FeatureCarousel() {
               transition: `transform ${transitionDuration}ms ease-in-out`
             }}
           >
-            {[...features, ...features].map((feature, index) => (
+            {displayFeatures.map((feature, index) => (
               <div key={index} style={{ width: `${100 / itemsPerSlide}%` }} className="flex-shrink-0 px-4">
-                <div className="p-8 rounded-3xl bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 text-center h-full">
+                <div className="p-8 rounded-3xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-800 text-center h-full">
                   <feature.icon className="w-12 h-12 text-primary mx-auto mb-6" />
                   <h3 className="text-xl font-bold text-slate-950 dark:text-white mb-3">{feature.title}</h3>
                   <p className="text-slate-600 dark:text-slate-400">{feature.desc}</p>

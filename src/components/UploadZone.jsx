@@ -13,7 +13,7 @@ export default function UploadZone({ onDrop, onDragOver, onDragLeave, onFileInpu
           : 'bg-gradient-to-br from-slate-200 to-slate-300 dark:from-slate-700 dark:to-slate-800'
       }`}
     >
-      <div className={`relative h-full w-full rounded-[22px] bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl p-6 md:p-8 flex flex-col items-center justify-center space-y-4 transition-all duration-500 ${
+      <div className={`relative h-full w-full rounded-[22px] bg-white/90 dark:bg-slate-800/90 backdrop-blur-xl p-6 md:p-8 flex flex-col items-center justify-center space-y-4 transition-all duration-500 ${
         isDragging ? 'bg-opacity-50 dark:bg-opacity-50' : 'bg-opacity-100 dark:bg-opacity-100'
       }`}>
         <input
