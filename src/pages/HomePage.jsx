@@ -159,14 +159,14 @@ export default function HomePage({ theme }) {
 
       {/* New Feature Sections */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <section className="space-y-24 md:py-20 py-10">
+        <section className="md:space-y-24 space-y-10 md:py-20 py-10">
           {/* Instant Conversion */}
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="bg-white/50 dark:bg-slate-800/50 p-4 rounded-2xl border border-slate-200 dark:border-slate-800 backdrop-blur-sm shadow-sm">
               <img src="/assets/img1.png" alt="Instant Conversion" className="w-full h-auto rounded-xl" />
             </div>
             <div>
-              <h2 className="text-2xl md:text-4xl font-extrabold text-charcoal dark:text-white mb-6">
+              <h2 className="text-2xl md:text-4xl font-bold text-charcoal dark:text-white mb-6">
                 Convert PNGs <span className="text-primary">instantly</span> with one click
               </h2>
               <p className="text-lg text-body-gray dark:text-slate-400 mb-6">
@@ -187,7 +187,7 @@ export default function HomePage({ theme }) {
           {/* Optimization Features */}
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="order-2 md:order-1">
-              <h2 className="text-2xl md:text-4xl font-extrabold text-charcoal dark:text-white mb-6">
+              <h2 className="text-2xl md:text-4xl font-bold text-charcoal dark:text-white mb-6">
                 Fine-tune <span className="text-primary">settings</span> as you wish
               </h2>
               <p className="text-lg text-body-gray dark:text-slate-400 mb-6">
@@ -214,7 +214,7 @@ export default function HomePage({ theme }) {
               <img src="/assets/img3.png" alt="API Integration" className="w-full h-auto rounded-xl" />
             </div>
             <div>
-              <h2 className="text-2xl md:text-4xl font-extrabold text-charcoal dark:text-white mb-6">
+              <h2 className="text-2xl md:text-4xl font-bold text-charcoal dark:text-white mb-6">
                 Easy API <span className="text-primary">integration</span> for speedy workflow
               </h2>
               <p className="text-lg text-body-gray dark:text-slate-400 mb-6">

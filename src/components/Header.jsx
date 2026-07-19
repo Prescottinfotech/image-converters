@@ -87,8 +87,14 @@ export default function Header({ theme, toggleTheme }) {
           </button>
         </nav>
 
-        {/* Mobile menu button */}
-        <div className="lg:hidden">
+        {/* Mobile menu button and theme toggle */}
+        <div className="lg:hidden flex items-center space-x-1">
+          <button 
+            onClick={toggleTheme} 
+            className={`p-2 ${isDark ? 'text-amber-400 hover:text-amber-300' : 'text-amber-500 hover:text-amber-600'}`}
+          >
+            {isDark ? <Sun className="h-6 w-6" /> : <Moon className="h-6 w-6" />}
+          </button>
           <button 
             onClick={() => setIsOpen(!isOpen)} 
             className={`p-2 ${isDark ? 'text-slate-300 hover:text-white' : 'text-body-gray hover:text-charcoal'}`}
@@ -114,16 +120,8 @@ export default function Header({ theme, toggleTheme }) {
               {item.name}
             </a>
           ))}
-          <button 
-            onClick={toggleTheme} 
-            className={`w-full flex items-center justify-between p-3 rounded-xl border ${isDark ? 'border-slate-700 text-slate-300 hover:bg-slate-800' : 'border-slate-200 text-body-gray hover:bg-slate-50'} transition-colors`}
-          >
-            <span className="font-semibold text-base">{isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode'}</span>
-            {isDark ? <Sun className="h-6 w-6 text-amber-400" /> : <Moon className="h-6 w-6 text-amber-500" />}
-          </button>
         </div>
       )}
     </header>
   );
 }
-
