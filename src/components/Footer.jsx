@@ -1,5 +1,6 @@
 import React from 'react';
 import { Layers, Mail, Github, Twitter } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export default function Footer({ theme }) {
   const isDark = theme === 'dark';
@@ -11,12 +12,12 @@ export default function Footer({ theme }) {
           
           {/* Brand Column */}
           <div className="space-y-4">
-            <div className="flex items-center space-x-2">
-              <div className="p-2 rounded-lg bg-primary text-white">
+            <Link to="/" className="flex items-center space-x-2 group hover:opacity-95 transition-opacity inline-flex">
+              <div className="p-2 rounded-lg bg-primary text-white group-hover:scale-[1.03] transition-transform duration-200">
                 <Layers className="h-5 w-5" />
               </div>
               <span className={`font-extrabold text-xl ${isDark ? 'text-white' : 'text-charcoal'}`}>Convertify</span>
-            </div>
+            </Link>
             <p className={`text-base ${isDark ? 'text-slate-400' : 'text-body-gray'} leading-relaxed`}>
               Professional, secure, and lightning-fast image conversion tools powered by your browser.
             </p>

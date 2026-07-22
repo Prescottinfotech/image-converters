@@ -178,9 +178,11 @@ export default function HomePage({ theme }) {
                 <li>✓ Maintain high quality even at lower file sizes.</li>
                 <li>✓ Process over 1,000 images in a single batch.</li>
               </ul>
-              <button className="px-6 py-3 bg-primary text-white rounded-xl font-semibold hover:bg-primary/90 transition-colors">
-                Try our free converter
-              </button>
+              <div className="flex justify-center">
+                <button className="px-6 py-3 bg-primary text-white rounded-xl font-semibold hover:bg-primary/90 transition-colors">
+                  Try our free converter
+                </button>
+              </div>
             </div>
           </div>
 
@@ -199,9 +201,11 @@ export default function HomePage({ theme }) {
                 <li>✓ Batch resizing and format options.</li>
                 <li>✓ Optimized presets for web and printing.</li>
               </ul>
-              <button className="px-6 py-3 bg-primary text-white rounded-xl font-semibold hover:bg-primary/90 transition-colors">
-                Explore settings
-              </button>
+              <div className="flex justify-center">
+                <button className="px-6 py-3 bg-primary text-white rounded-xl font-semibold hover:bg-primary/90 transition-colors">
+                  Explore settings
+                </button>
+              </div>
             </div>
             <div className="order-1 md:order-2 bg-white/50 dark:bg-slate-800/50 p-4 rounded-2xl border border-slate-200 dark:border-slate-800 backdrop-blur-sm shadow-sm">
               <img src="/assets/img2.png" alt="Optimization Settings" className="w-full h-auto rounded-xl" />
@@ -226,9 +230,11 @@ export default function HomePage({ theme }) {
                 <li>✓ 99.9% uptime guarantee.</li>
                 <li>✓ Secure, automated file processing.</li>
               </ul>
-              <button className="px-6 py-3 bg-primary text-white rounded-xl font-semibold hover:bg-primary/90 transition-colors">
-                Contact us for API access
-              </button>
+              <div className="flex justify-center">
+                <button className="px-6 py-3 bg-primary text-white rounded-xl font-semibold hover:bg-primary/90 transition-colors">
+                  Contact us for API access
+                </button>
+              </div>
             </div>
           </div>
         </section>

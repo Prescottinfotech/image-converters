@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Layers, ChevronDown, Menu, X, Sun, Moon } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export default function Header({ theme, toggleTheme }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -28,14 +29,14 @@ export default function Header({ theme, toggleTheme }) {
     <header className={`border-b transition-colors ${isDark ? 'border-slate-800 bg-slate-900/50' : 'border-slate-200 bg-white/70'} backdrop-blur-md sticky top-0 z-50`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         {/* Logo */}
-        <div className="flex items-center space-x-3">
-          <div className="p-2.5 rounded-xl bg-primary text-white shadow-sm">
+        <Link to="/" className="flex items-center space-x-3 group hover:opacity-95 transition-opacity">
+          <div className="p-2.5 rounded-xl bg-primary text-white shadow-sm group-hover:scale-[1.03] transition-transform duration-200">
             <Layers className="h-6 w-6" />
           </div>
           <span className={`font-extrabold text-2xl tracking-tight ${isDark ? 'text-white' : 'text-charcoal'}`}>
             Convertify
           </span>
-        </div>
+        </Link>
 
         {/* Desktop Nav */}
         <nav className="hidden lg:flex items-center space-x-8">

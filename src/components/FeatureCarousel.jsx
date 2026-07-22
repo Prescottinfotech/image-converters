@@ -53,7 +53,7 @@ export default function FeatureCarousel() {
   }, []);
 
   return (
-    <section className="md:py-16 py-5 dark:bg-slate-950">
+    <section className="md:py-7 py-5 dark:bg-slate-950">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 className="md:text-3xl text-xl font-bold text-center text-slate-950 dark:text-white md:mb-12 mb-8">Why Choose Us</h2>
         <div className="relative overflow-hidden">
